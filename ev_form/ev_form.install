@@ -1,0 +1,91 @@
+<?php
+use Drupal\Core\Database\Database;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityTypeInterface;
+/**
+ * Implements hook_schema().
+ */
+function ev_form_schema() {
+    $schema['example_users'] = [
+        'description' => 'Guarda la informacion del formulario custom.',
+        'fields' => [
+          'registro_id' => [
+            'description' => 'ID del registro.',
+            'type' => 'serial',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+          ],
+          'nombre' => [
+            'description' => 'Nombre de la persona que se registro.',
+            'type' => 'varchar_ascii',
+            'length' => EntityTypeInterface::ID_MAX_LENGTH,
+            'not null' => FALSE,
+            'default' => '',
+          ],
+          'identificacion' => [
+            'description' => 'numero de identtificacion.',
+            'type' => 'int',
+            'not null' => FALSE,
+            'default' => 0,
+          ],
+          'fecha_nacimiento' => [
+            'description' => 'fecha de nacimiento.',
+            'type' => 'varchar_ascii',
+            'length' => 128,
+            'not null' => FALSE,
+            'default' => 0,
+          ],
+          'cargo' => [
+            'description' => 'Cargo de la persona llave foranea.',
+            'type' => 'int',
+            'not null' => FALSE,
+            'default' => 000,
+          ],
+          'estado' => [
+            'description' => 'EStado del registro segun cargo.',
+            'type' => 'int',
+            'not null' => FALSE,
+            'default' => 0,
+          ],
+        ],
+        'primary key' => ['registro_id'],
+      ];
+      $schema['example_cargo'] = [
+        'description' => 'Listado de cargos a usar.',
+        'fields' => [
+          'cargo_id' => [
+            'description' => 'ID del cargo.',
+            'type' => 'serial',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+          ],
+          'nombre' => [
+            'description' => 'Nombre del cargo.',
+            'type' => 'varchar_ascii',
+            'length' => EntityTypeInterface::ID_MAX_LENGTH,
+            'not null' => FALSE,
+            'default' => '',
+          ],
+        ],
+        'primary key' => ['cargo_id'],
+      ];
+    return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function ev_form_install() {
+
+    $cargos=[
+        ['nombre' => 'Administrador'],
+        ['nombre' => 'Webmaster'],
+        ['nombre' => 'Desarrollador']
+    ];
+    $query = Database::getConnection()->insert('example_cargo')->fields(['nombre']);
+    foreach ($cargos as $cargo) {
+        $query->values($cargo);
+    }
+    $query->execute();
+  
+}

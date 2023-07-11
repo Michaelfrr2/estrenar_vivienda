@@ -1,0 +1,58 @@
+.ev-form .titulo h1{
+    text-align: center;
+}
+
+.ev-form .form-render{
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.ev-form .columns{
+    padding: 0 15px;
+    width: 50%;
+}
+
+.ev-form label{    
+    font-weight: 700;
+    margin: 0;
+}
+
+.ev-form .description{
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #867575;
+}
+
+.ev-form input,.ev-form select{
+    padding: 0 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ev-form .submit{
+    text-align: center;
+    padding-top: 30px;
+}
+
+#ev-form.ev-form .form-submit{
+    width: 400px;
+    justify-content: center;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .ev-form .form-render{
+        flex-direction: column;
+    }
+    .ev-form .columns{
+        padding: 0 15px;
+        width: 90%;
+    }
+
+    #ev-form.ev-form .form-submit{
+        width: 80%;
+        justify-content: center;
+        margin: 0 20px;
+    }
+  }

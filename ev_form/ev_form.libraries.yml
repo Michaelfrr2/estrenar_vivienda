@@ -1,0 +1,5 @@
+ev_form:
+  version: 1.x
+  css:
+    base:
+      assets/css/global.css: {weight: -1}

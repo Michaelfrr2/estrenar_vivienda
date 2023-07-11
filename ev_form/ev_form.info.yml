@@ -1,0 +1,10 @@
+name: Estrenar vivienda form
+description: "Modulo custom para estrenar vivienda"
+type: module
+core_version_requirement: ^9
+package: 'custom'
+dependencies:
+  - restui:restui
+
+version: '1.x'
+project: 'ev_form'

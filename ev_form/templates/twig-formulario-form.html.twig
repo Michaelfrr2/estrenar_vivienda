@@ -1,0 +1,20 @@
+
+<div class='container'>
+<div class='titulo'> {{ form.titulo }} </div>
+    <div class="form-render">
+        <div class="columns">
+            {{ form.nombre }}
+            {{ form.nacimiento }}
+        </div>
+        <div class="columns">
+            {{ form.identificacion }}
+                {{ form.cargo }}
+        </div>
+    </div>
+    <div class="submit">
+        {{ form.submit }}
+    </div>
+</div>
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
